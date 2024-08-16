@@ -30,9 +30,13 @@ export const notesSlice = createSlice({
       .addCase(fetchNotes.rejected, (state)=>{
         state.loadingNotes = false
       });
+  },
+  selectors:{
+    selectNotes: state => state.notes
   }
 })
 
 export const notesReducer = notesSlice.reducer
 export const {} = notesSlice.actions;
+export const {selectNotes} = notesSlice.selectors;
 

@@ -6,7 +6,7 @@ import { IGuestBookNoteDB, IGuestBookNoteMutation } from '../../types.ts';
 export const fetchNotes = createAsyncThunk<IGuestBookNoteDB[]>(
   "PostGuestNote/fetchNotes",
   async ()=>{
-    const {data: notes} = await axiosApi.get<IGuestBookNoteDB[]>("/guestBook");
+    const {data: notes} = await axiosApi.get("/guestBook");
     return notes;
   }
 )
