@@ -17,7 +17,7 @@ guestBook.post("/", async (req, res) => {
 
   const guestBookNote:IGuestBookNoteMutation = {
     author:req.body.author,
-    message: req.body.message,
+    note: req.body.message,
     image:req.file ? req.file.filename : null,
   }
 
