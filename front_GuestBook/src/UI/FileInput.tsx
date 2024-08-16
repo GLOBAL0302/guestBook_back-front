@@ -23,7 +23,6 @@ const FileInput:React.FC<Props> = ({onChange, name}) => {
     else{
       setFileName("");
     }
-
     onChange(event);
   }
   return (
@@ -31,10 +30,13 @@ const FileInput:React.FC<Props> = ({onChange, name}) => {
       <input type="file" ref={inputRef} name={name} className="d-none" onChange={onFileChange}/>
       <div className="input-group mb-3">
         <input
-          value={fileName}
+          defaultValue={fileName}
           onClick={activateInput}
-          type="text" className="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
-               aria-describedby="basic-addon2"/>
+          type="text"
+          className="form-control"
+          placeholder="Recipient's username"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"/>
         <button
           className="input-group-text"
           id="basic-addon2"

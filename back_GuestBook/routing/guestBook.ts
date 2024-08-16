@@ -1,26 +1,31 @@
 import express from "express";
 import { IGuestBookNoteMutation } from '../types';
+import fileDb from '../fileDb';
 
 
 
 const guestBook = express.Router();
 guestBook.get("/", async (req, res) => {
-  res.end("<h1>Guest Book Page</h1>");
+  const allNotes = await fileDb.getItems()
+  return res.send(allNotes);
 })
 
 guestBook.post("/", async (req, res) => {
-  if(!req.body.message){
+  if(!req.body.note){
     return res.status(400).send({
       error: "the message should not be empty"
     })
   }
+  console.log("hi")
 
   const guestBookNote:IGuestBookNoteMutation = {
     author:req.body.author,
-    note: req.body.message,
+    note: req.body.note,
     image:req.file ? req.file.filename : null,
   }
 
+  const savedNote = await fileDb.addNote(guestBookNote);
+  return res.send(savedNote)
 })
 
 export default guestBook;
